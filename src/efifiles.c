@@ -85,8 +85,8 @@ EFI_STATUS efi_files_open_file (EFI_FILE_HANDLE root, const CHAR16* path,
 EFI_STATUS efi_files_read_file (EFI_FILE_HANDLE handle, void *buf, 
          uint64_t count, int64_t *nread)
   {
-  long unsigned int n = count;
-  int ret = uefi_call_wrapper (handle->Read, 3, handle, &n, buf);
+  int64_t n = count;
+  EFI_STATUS ret = uefi_call_wrapper (handle->Read, 3, handle, &n, buf);
   *nread = n;
   return ret;
   }
@@ -100,8 +100,8 @@ EFI_STATUS efi_files_read_file (EFI_FILE_HANDLE handle, void *buf,
 EFI_STATUS efi_files_write_file (EFI_FILE_HANDLE handle, void *buf, 
          uint64_t count, int64_t *nwritten)
   {
-  long unsigned int n = count;
-  int ret = uefi_call_wrapper (handle->Write, 3, handle, &n, buf);
+  int64_t n = count;
+  EFI_STATUS ret = uefi_call_wrapper (handle->Write, 3, handle, &n, buf);
   *nwritten = n;
   return ret;
   }

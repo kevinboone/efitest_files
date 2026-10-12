@@ -67,7 +67,7 @@ int main (int argc, char **argv)
 
   filesystems_init();
 
-  myprintf ("Kevin's dumb EFI shell\n");
+  myprintf ("\x1B[1mKevin's dumb EFI shell\x1B[0m\n");
   myprintf ("Enter 'help' for a list of commands\n");
 
   BOOL exit = FALSE;
